@@ -50,12 +50,17 @@ section {
     background-color: #444; /* Dark grey for sections */
     padding: 20px;
     border-radius: 5px; /* Rounded corners */
+    color: #fff; /* White text */
 }
 
 section h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #fff; /* White text */
+}
+
+/* Adding margin to the top of the About section */
+#about {
+    margin-top: 40px;
 }
 
 /* Styling projects */
@@ -66,7 +71,6 @@ section h2 {
 .project h3 {
     margin-bottom: 10px;
     font-size: 24px;
-    color: #fff; /* White text */
 }
 
 .project p {
