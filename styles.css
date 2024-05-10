@@ -14,7 +14,10 @@ body {
 
 /* Styling header */
 header {
-    background-color: #222; /* Darker grey */
+    background-image: url('banner.jpg'); /* Replace 'banner.jpg' with your image file */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
     padding: 20px;
     text-align: center;
 }
