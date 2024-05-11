@@ -82,6 +82,19 @@ section h2 {
     color: #ccc; /* Light grey text */
 }
 
+.project img {
+    max-width: 100%; /* Ensure images scale proportionally */
+}
+
+/* Styling list items */
+.project ul {
+    padding-left: 20px; /* Add padding to the left of the list */
+}
+
+.project ul li {
+    margin-bottom: 5px; /* Add margin between list items */
+}
+
 /* Styling footer */
 footer {
     background-color: #222; /* Darker grey */
