@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+    transition-duration: 1000ms;
+}
+
 /* Resetting default margin and padding */
 body, header, footer, main, section, ul, li {
     margin: 0;
@@ -16,7 +21,7 @@ body {
 header {
     background-image: url('JoshwynsBanner.png'); /* Replace 'banner.jpg' with your image file */
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     color: #000000;
     padding: 20px;
     text-align: center;
