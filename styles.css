@@ -15,7 +15,8 @@ body {
 /* Styling header */
 header {
     background-image: url('JoshwynsBanner.png'); /* Replace 'banner.jpg' with your image file */
-    background-size: auto 100%;
+    background-size: contain; /* Ensure the entire image is visible */
+    background-repeat: no-repeat; /* Prevent repetition */
     background-position: center;
     color: #fff;
     padding: 20px;
