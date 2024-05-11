@@ -46,7 +46,6 @@
             <p>In this Blender project I crafted four realistic ice cubes falling into red water. Throughout the project, I delved into various aspects of 3D modeling, refining my skills in creating detailed and lifelike objects. From shaping the ice cubes to designing the glass cup, I honed my ability to capture realistic textures and proportions. Moreover, I explored animation techniques to bring the ice cubes to life as they descended into the liquid. This involved working with keyframe animations and timing to achieve natural and fluid motion. Additionally, I utilized blender's own liquid simulation, experimenting with parameters to accurately depict the behavior of the liquid as the ice cubes interacted with it. Furthermore, I gained experience in lighting, shading, and rendering to enhance the visual quality of the scene. Adjusting lighting setups and applying appropriate materials to the objects allowed me to achieve a more realistic and visually appealing result.</p>
                 <img src="IceCubeSplash5.gif" alt="Ice Cube Splash">
         </div>
-        <!-- Add more projects as needed -->
     </section>
 
     <section id="contact">
@@ -58,5 +57,17 @@
     <footer>
         <p>&copy; 2024 Joshwyn Parekh</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
