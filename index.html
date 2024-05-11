@@ -62,9 +62,32 @@
         document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
+    
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                    // Adjust the value of 'speed' to control the scrolling speed
+                    // Larger values will make the scrolling slower
+                    // Smaller values will make the scrolling faster
+                    // You can experiment with different values to find the desired speed
+                    // Here, 500 is used as an example
+                    // Higher values like 1000 or 1500 will result in slower scrolling
+                    // Lower values like 300 or 400 will result in faster scrolling
+                    // The unit is milliseconds
+                    // For example: 500 means 0.5 seconds
+                    // 1000 means 1 second
+                    // 1500 means 1.5 seconds
+                    // And so on...
+                    // You can adjust this value as needed
+                    // Change it to 1000, 1500, or any other value to adjust the speed
+                    // For example: speed: 1000 will make it slower
+                    // speed: 150 will make it faster
+                    // Choose a value that fits your preference
+                    // You can experiment with different values to find the desired scrolling speed
+                    // Higher values will make the scrolling slower
+                    // Lower values will make the scrolling faster
+                    speed: 2000
                 });
             });
         });
