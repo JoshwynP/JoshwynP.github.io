@@ -16,9 +16,9 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Keep background fixed */
-    background-color: #caae94; /* Fallback background color */
+    background-color: #023957; /* Fallback background color */
     padding: 200px;
-    background-color: #caae94;
+    background-color: #023957;
     color: #fff;
 }
 
