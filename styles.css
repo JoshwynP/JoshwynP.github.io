@@ -80,7 +80,6 @@ section h2 {
 /* PROJECTS */
 .project {
     margin-bottom: 20px;
-    display: flex;
     justify-content: center; /* Center the images horizontally */
 }
 
