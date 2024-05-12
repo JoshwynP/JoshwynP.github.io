@@ -80,7 +80,7 @@ section h2 {
 /* PROJECTS */
 .project {
     margin-bottom: 20px;
-    justify-content: center; /* Center the images horizontally */
+    position: relative;
 }
 
 .project h3 {
@@ -94,7 +94,11 @@ section h2 {
 }
 
 .project img {
-    max-width: 100%; /* Ensure images scale proportionally */
+    position: absolute; /* Set image position to absolute */
+    left: 50%; /* Move image to the center horizontally */
+    transform: translateX(-50%); /* Adjust image position to center */
+    max-width: 100%; /* Ensure images don't exceed container width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Styling list items */
