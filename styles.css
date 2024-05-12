@@ -58,7 +58,7 @@ section {
     margin-bottom: 40px;
     background-color: #444; /* Dark grey for sections */
     padding: 20px;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 50px; /* Rounded corners */
     color: #fff; /* White text */
 }
 
