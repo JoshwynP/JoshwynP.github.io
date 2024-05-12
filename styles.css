@@ -12,7 +12,9 @@ body, header, footer, main, section, ul, li {
 
 /* Adding padding to the sides */
 body {
-    padding: 100px;
+    padding: 0; /* Set padding to zero */
+    margin: 0; /* Set margin to zero */
+    /*padding: 100px;*/
     background-color: #caae94;
     color: #fff;
 }
