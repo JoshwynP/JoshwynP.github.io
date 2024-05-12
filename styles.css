@@ -63,6 +63,10 @@ section {
     padding: 50px;
     border-radius: 25px; /* Rounded corners */
     color: #fff; /* White text */
+    padding-top: 100px; /* Add top padding */
+    padding-right: 100px; /* Add right padding */
+    padding-bottom: 100px; /* Add bottom padding */
+    padding-left: 100px; /* Add left padding */
 }
 
 section h2 {
