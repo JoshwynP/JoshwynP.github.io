@@ -96,7 +96,6 @@ section h2 {
 
 .project img {
     max-width: 100%; /* Ensure images scale proportionally */
-    height: auto;
 }
 
 /* Styling list items */
