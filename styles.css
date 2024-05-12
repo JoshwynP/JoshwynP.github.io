@@ -24,14 +24,14 @@ body {
 
 /* Styling header */
 header {
-    background-image: url('JoshwynsBanner.png'); /* Replace 'banner.jpg' with your image file */
+    /*background-image: url('JoshwynsBanner.png'); /* Replace 'banner.jpg' with your image file 
     background-size: cover;
     background-position: center;
-    color: #000000;
-    text-align: center;
     height: 300px;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 !important;*/
+    color: #000000;
+    text-align: center;
 }
 
 header h1 {
@@ -71,7 +71,7 @@ section {
 section h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #3e362e; 
+    color: rgb(248,241,222); 
 }
 
 
