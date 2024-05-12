@@ -13,7 +13,7 @@ body, header, footer, main, section, ul, li {
 /* Adding padding to the sides */
 body {
     padding: 20px;
-    background-color: #333;
+    background-color: #adbbda; /* Body colour */
     color: #fff;
 }
 
@@ -84,7 +84,7 @@ section h2 {
 
 .project p {
     font-size: 16px;
-    color: #adbbda; /* Background colour */
+    color: #ccc; /* Paragraph text colour */
 }
 
 .project img {
