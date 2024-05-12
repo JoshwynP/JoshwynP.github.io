@@ -62,7 +62,7 @@ main {
 /* Styling sections */
 section {
     margin-bottom: 40px;
-    background-color: #18545c; /* Section colour */
+    background-color: rgba(24, 84, 92, 0.8); /* Section colour */
     padding: 50px;
     border-radius: 25px; /* Rounded corners */
     color: #fff; /* White text */
