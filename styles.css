@@ -12,7 +12,7 @@ body, header, footer, main, section, ul, li {
 
 /* Adding padding to the sides */
 body {
-    padding: 20px;
+    padding: 100px;
     background-color: #caae94;
     color: #fff;
 }
@@ -57,7 +57,7 @@ main {
 section {
     margin-bottom: 40px;
     background-color: #93785b; /* Section colour */
-    padding: 20px;
+    padding: 50px;
     border-radius: 25px; /* Rounded corners */
     color: #fff; /* White text */
 }
@@ -68,14 +68,21 @@ section h2 {
     color: #3e362e; 
 }
 
-/* Adding margin to the top of the About section */
+
+/*    /////////////////Section Styles ///////////////      */
+/**/
+/* ABOUT */
 #about {
     margin-top: 40px;
 }
 
-/* Styling projects */
+
+/* PROJECTS */
 .project {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically */
 }
 
 .project h3 {
@@ -90,6 +97,7 @@ section h2 {
 
 .project img {
     max-width: 100%; /* Ensure images scale proportionally */
+    height: auto;
 }
 
 /* Styling list items */
