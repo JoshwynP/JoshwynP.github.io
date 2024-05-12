@@ -30,15 +30,13 @@ header {
     
     padding: 0 !important;
     margin: 0 !important;*/
-    height: 300px;
     color: #000000;
     text-align: center;
-    font-size: 100px !important;
 }
 
 header h1 {
     margin: 0;
-    font-size: 36px;
+    font-size: 64px;
 }
 
 nav ul {
@@ -115,7 +113,7 @@ section h2 {
 
 /* Styling footer */
 footer {
-    background-color: #865d36; /* Footer colour */
+    background-color: #1b4f65; /* Footer colour */
     color: #fff;
     text-align: center;
     padding: 10px;
