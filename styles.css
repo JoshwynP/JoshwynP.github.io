@@ -23,9 +23,10 @@ header {
     background-size: cover;
     background-position: center;
     color: #000000;
-    padding: 20px;
+    padding: 0; /* Remove padding */
     text-align: center;
     height: 300px;
+    margin-top: 0; /* Remove margin from the top */
 }
 
 header h1 {
