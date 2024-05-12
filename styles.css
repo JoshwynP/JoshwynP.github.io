@@ -12,6 +12,11 @@ body, header, footer, main, section, ul, li {
 
 /* Adding padding to the sides */
 body {
+    background-image: url('WebsiteBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keep background fixed */
+    background-color: #caae94; /* Fallback background color */
     padding: 100px;
     background-color: #caae94;
     color: #fff;
