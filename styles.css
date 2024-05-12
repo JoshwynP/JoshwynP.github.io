@@ -82,7 +82,6 @@ section h2 {
     margin-bottom: 20px;
     display: flex;
     justify-content: center; /* Center the images horizontally */
-    align-items: center; /* Center the images vertically */
 }
 
 .project h3 {
