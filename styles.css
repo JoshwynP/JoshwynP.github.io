@@ -12,9 +12,7 @@ body, header, footer, main, section, ul, li {
 
 /* Adding padding to the sides */
 body {
-    padding: 0; /* Set padding to zero */
-    margin: 0; /* Set margin to zero */
-    /*padding: 100px;*/
+    padding: 100px;
     background-color: #caae94;
     color: #fff;
 }
@@ -63,10 +61,6 @@ section {
     padding: 50px;
     border-radius: 25px; /* Rounded corners */
     color: #fff; /* White text */
-    padding-top: 100px; /* Add top padding */
-    padding-right: 100px; /* Add right padding */
-    padding-bottom: 100px; /* Add bottom padding */
-    padding-left: 100px; /* Add left padding */
 }
 
 section h2 {
@@ -117,6 +111,6 @@ footer {
     background-color: #865d36; /* Footer colour */
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     font-size: 14px;
 }
