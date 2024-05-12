@@ -35,15 +35,18 @@ header {
 }
 
 header h1 {
+    color: #000000;
     margin: 0;
     font-size: 64px;
 }
 
 nav ul {
+    color: #000000;
     list-style-type: none;
 }
 
 nav ul li {
+    color: #000000;
     display: inline;
     margin-right: 20px;
 }
