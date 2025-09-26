@@ -1,0 +1,21 @@
+.liquid-ether-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  /* Keep WebGL on its own layer to avoid flicker during filter-heavy UI animations above */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  contain: paint layout style;
+}
+
+.liquid-ether-container canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
