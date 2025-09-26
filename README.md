@@ -1,1 +1,0 @@
-# Joshwyn Parekh Portfolio
