@@ -1,6 +1,5 @@
 // main.js - Patched version for JoshwynParekh.me
 
-// Grab the canvas (ensure the HTML has <canvas id="gl"></canvas>)
 const canvas = document.getElementById("gl");
 const gl = canvas.getContext("webgl", { antialias: false, preserveDrawingBuffer: false });
 
@@ -9,7 +8,6 @@ if (!gl) {
   throw new Error("WebGL not supported");
 }
 
-// Helpers to compile/link shaders
 function compileShader(type, source) {
   const sh = gl.createShader(type);
   gl.shaderSource(sh, source);
@@ -35,7 +33,6 @@ function createProgram(vsSource, fsSource) {
   return prog;
 }
 
-// Load shader text
 async function loadText(url) {
   try {
     const res = await fetch(url);
@@ -49,31 +46,38 @@ async function loadText(url) {
   }
 }
 
-// State
 let program;
 let timeLoc, resLoc, mouseLoc, foldLoc, lastMoveLoc;
 let lastMove = 0;
 let start = performance.now();
 let lastMouseMove = Date.now();
 let foldIntensity = 1.0;
+let rafId = null;
+let isIdle = false;
 
-// Mouse state
 const mouse = { x: 0, y: 0, nx: 0.5, ny: 0.5 };
 
-// Resize handling
 function setCanvasSize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   canvas.style.width = "100vw";
   canvas.style.height = "100vh";
   gl.viewport(0, 0, canvas.width, canvas.height);
-
   mouse.x = mouse.nx * canvas.width;
   mouse.y = mouse.ny * canvas.height;
 }
 window.addEventListener("resize", setCanvasSize);
 
-// Mouse mapping
+function wakeUp() {
+  lastMouseMove = Date.now();
+  foldIntensity = 1.0;
+  lastMove = performance.now() / 1000;
+  if (isIdle) {
+    isIdle = false;
+    rafId = requestAnimationFrame(render);
+  }
+}
+
 function handlePointer(clientX, clientY) {
   const rect = canvas.getBoundingClientRect();
   const x = clientX - rect.left;
@@ -83,9 +87,7 @@ function handlePointer(clientX, clientY) {
   mouse.y = Math.max(0, Math.min(rect.height, y));
   mouse.nx = mouse.x / rect.width;
   mouse.ny = mouse.y / rect.height;
-  lastMouseMove = Date.now();
-  foldIntensity = 1.0;
-  lastMove = performance.now() / 1000;
+  wakeUp();
 }
 window.addEventListener("mousemove", (e) => handlePointer(e.clientX, e.clientY), { passive: true });
 window.addEventListener("touchmove", (e) => {
@@ -94,32 +96,39 @@ window.addEventListener("touchmove", (e) => {
     handlePointer(t.clientX, t.clientY);
   }
 }, { passive: true });
+window.addEventListener("touchstart", wakeUp, { passive: true });
 
-// Main init
+// Pause when tab is hidden, resume when visible
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      isIdle = true;
+    }
+  } else {
+    wakeUp();
+  }
+});
+
 async function init() {
-  // Load shaders via relative paths (HTTPS-safe)
   const vsSource = await loadText("./shader.vert");
   const fsSource = await loadText("./shader.frag");
 
   program = createProgram(vsSource, fsSource);
   gl.useProgram(program);
 
-  // Fullscreen quad
   const quad = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, quad);
   gl.bufferData(
     gl.ARRAY_BUFFER,
-    new Float32Array([
-      -1, -1,  1, -1, -1,  1,
-      -1,  1,  1, -1,  1,  1
-    ]),
+    new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
     gl.STATIC_DRAW
   );
   const aPos = gl.getAttribLocation(program, "a_position");
   gl.enableVertexAttribArray(aPos);
   gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
-  // Uniform locations
   timeLoc = gl.getUniformLocation(program, "u_time");
   resLoc  = gl.getUniformLocation(program, "u_resolution");
   mouseLoc = gl.getUniformLocation(program, "u_mouse");
@@ -127,32 +136,23 @@ async function init() {
   lastMoveLoc = gl.getUniformLocation(program, "u_lastMove");
 
   setCanvasSize();
-
-  // Initialize mouse to center
   mouse.x = canvas.width * 0.5;
   mouse.y = canvas.height * 0.5;
   mouse.nx = 0.5;
   mouse.ny = 0.5;
 
-  // All heavy setup is done. Fade in the canvas.
   canvas.style.opacity = '1';
-
-  requestAnimationFrame(render);
+  rafId = requestAnimationFrame(render);
 }
 
-// Wait for all initial resources (HTML, CSS, images) to load before
-// starting the heavy WebGL initialization and render loop.
 window.addEventListener('load', init);
 
-// Render loop
 function render() {
   const t = (performance.now() - start) * 0.001;
 
-  // Clear the canvas
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  // Fade folds when idle
   const idle = Date.now() - lastMouseMove;
   foldIntensity = Math.max(0.0, 1.0 - idle / 2000.0);
 
@@ -164,5 +164,13 @@ function render() {
   gl.uniform1f(lastMoveLoc, lastMove);
 
   gl.drawArrays(gl.TRIANGLES, 0, 6);
-  requestAnimationFrame(render);
+
+  // Stop the loop once fully idle — resumes automatically on next interaction
+  if (foldIntensity <= 0.0) {
+    isIdle = true;
+    rafId = null;
+    return;
+  }
+
+  rafId = requestAnimationFrame(render);
 }

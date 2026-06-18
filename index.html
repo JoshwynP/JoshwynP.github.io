@@ -4,11 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joshwyn Parekh Portfolio</title>
+  <link rel="modulepreload" href="/assets/index-B10IX70Z.js">
+  <link rel="preload" as="style" href="/assets/index-D-0fT4lu.css">
   <script type="module" crossorigin src="/assets/index-B10IX70Z.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-D-0fT4lu.css">
   <link rel="icon" href="/assets/LOGO_STEAM-LiDHMAmV.png" type="image/png">
+  <style>
+    #site-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease;
+    }
+    #site-loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-ring {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 3px solid rgba(139, 92, 246, 0.15);
+      border-top-color: #8b5cf6;
+      animation: loader-spin 0.85s linear infinite;
+    }
+    .loader-ring::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(139, 92, 246, 0.08);
+      animation: loader-spin 2s linear infinite reverse;
+    }
+    @keyframes loader-spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <div id="site-loader" aria-hidden="true">
+    <div class="loader-ring"></div>
+  </div>
   <div id="root"></div>
+  <script>
+    (function () {
+      var loader = document.getElementById('site-loader');
+      var root = document.getElementById('root');
+      if (!loader || !root) return;
+      var observer = new MutationObserver(function () {
+        if (root.children.length > 0) {
+          observer.disconnect();
+          // Small delay so first frame renders before fade starts
+          setTimeout(function () {
+            loader.classList.add('fade-out');
+            setTimeout(function () { loader.remove(); }, 650);
+          }, 120);
+        }
+      });
+      observer.observe(root, { childList: true });
+    })();
+  </script>
 </body>
 </html>
