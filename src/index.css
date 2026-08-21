@@ -1,0 +1,11 @@
+@import './components/LiquidEther.css';
+@import './components/StaggeredMenu.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
